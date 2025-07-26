@@ -2,9 +2,6 @@ FROM debian:trixie-slim AS build
 
 WORKDIR /src
 
-ADD --checksum=sha256:7ade3d78d9403542cf53b3ed3a1575751c815d4b7ff3f1fb364aa1ee664807f0 \
- https://github.com/wojciech-graj/doom-ascii/archive/refs/tags/0.3.1.tar.gz .
-
 RUN apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
@@ -12,6 +9,9 @@ RUN apt-get update \
  make \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
+ADD --checksum=sha256:7ade3d78d9403542cf53b3ed3a1575751c815d4b7ff3f1fb364aa1ee664807f0 \
+ https://github.com/wojciech-graj/doom-ascii/archive/refs/tags/0.3.1.tar.gz .
 
 RUN tar xzf 0.3.1.tar.gz -C /src --strip-components=1 \
  && CFLAGS=-DDG_DEMO make -j$(nproc)
