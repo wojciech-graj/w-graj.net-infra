@@ -1,0 +1,10 @@
+name: doom-ascii
+
+services:
+
+  doom-ascii:
+    image: doom-ascii:latest
+    build: ./doom-ascii
+    ports:
+      - '0.0.0.0:666:666'
+    pull_policy: never
