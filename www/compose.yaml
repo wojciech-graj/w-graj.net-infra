@@ -27,7 +27,6 @@ services:
     build:
       context: ./www
       additional_contexts:
-        - src=./../../src
         - res=${RES_DIR}
     labels:
       - traefik.enable=true

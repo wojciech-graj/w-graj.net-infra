@@ -15,7 +15,7 @@ RUN apt-get update \
 
 RUN emacs --batch --script /root/.emacs.d/init.el
 
-COPY --from=src . /src/w-graj.net
+ADD https://github.com/wojciech-graj/w-graj.net.git /src/w-graj.net
 
 RUN WEBSITE_BASE_DIRECTORY=/src/w-graj.net \
  WEBSITE_PUBLISHING_DIRECTORY=/src/out.w-graj.net \
