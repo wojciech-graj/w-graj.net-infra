@@ -7,8 +7,8 @@ ADD https://github.com/wojciech-graj/.emacs.d.git /root/.emacs.d
 
 RUN apt-get update \
  && apt-get upgrade -y \
- && xargs -a /root/.emacs.d/packages.txt apt-get install -y --no-install-recommends \
- && apt-get install -y --no-install-recommends \
+ && xargs -a /root/.emacs.d/packages.txt \
+ apt-get install -y --no-install-recommends \
  emacs-nox \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*

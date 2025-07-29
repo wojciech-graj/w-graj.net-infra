@@ -14,7 +14,7 @@ ADD --checksum=sha256:7ade3d78d9403542cf53b3ed3a1575751c815d4b7ff3f1fb364aa1ee66
  https://github.com/wojciech-graj/doom-ascii/archive/refs/tags/0.3.1.tar.gz .
 
 RUN tar xzf 0.3.1.tar.gz -C /src --strip-components=1 \
- && CFLAGS=-DDG_DEMO make -j$(nproc)
+ && CFLAGS=-DDG_DEMO make -j"$(nproc)"
 
 FROM debian:trixie-slim
 
