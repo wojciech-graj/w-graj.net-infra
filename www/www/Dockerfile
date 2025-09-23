@@ -24,7 +24,7 @@ RUN WEBSITE_BASE_DIRECTORY=/src/w-graj.net \
  --execute "(setq enable-local-variables :all)" \
  --execute "(org-publish-project \"website\")"
 
-FROM httpd:2-bookworm
+FROM httpd:2-trixie
 
 COPY --from=res . /usr/local/apache2/htdocs
 COPY --from=build /src/out.w-graj.net /usr/local/apache2/htdocs
