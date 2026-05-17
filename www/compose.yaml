@@ -10,12 +10,16 @@ services:
       - '0.0.0.0:80:80'
       - '0.0.0.0:443:443'
       - '0.0.0.0:8123:8123'
+      - '0.0.0.0:9091:9091'
+      - '0.0.0.0:32400:32400'
     command:
       - --providers.docker=true
       - --providers.docker.exposedbydefault=false
       - --entryPoints.web.address=:80
       - --entryPoints.websecure.address=:443
       - --entryPoints.home-assistant.address=:8123
+      - --entryPoints.transmission.address=:9091
+      - --entryPoints.plex.address=:32400
       - --certificatesresolvers.myresolver.acme.httpchallenge=true
       - --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web
       - --certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}
@@ -36,8 +40,21 @@ services:
       - traefik.enable=true
       - traefik.http.routers.home-assistant-router.entrypoints=home-assistant
       - traefik.http.routers.home-assistant-router.rule=Host(`${HOST}`)
+      - traefik.http.routers.home-assistant-router.service=home-assistant-service
       - traefik.http.routers.home-assistant-router.tls.certresolver=myresolver
       - traefik.http.services.home-assistant-service.loadbalancer.server.port=8123
+
+      - traefik.http.routers.transmission-router.entrypoints=transmission
+      - traefik.http.routers.transmission-router.rule=Host(`${HOST}`)
+      - traefik.http.routers.transmission-router.service=transmission-service
+      - traefik.http.routers.transmission-router.tls.certresolver=myresolver
+      - traefik.http.services.transmission-service.loadbalancer.server.port=9091
+
+      - traefik.http.routers.plex-router.entrypoints=plex
+      - traefik.http.routers.plex-router.rule=Host(`${HOST}`)
+      - traefik.http.routers.plex-router.service=plex-service
+      - traefik.http.routers.plex-router.tls.certresolver=myresolver
+      - traefik.http.services.plex-service.loadbalancer.server.port=32400
     cap_add:
       - NET_ADMIN
     sysctls:
