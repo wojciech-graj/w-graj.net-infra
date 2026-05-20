@@ -2,7 +2,7 @@ name: w-graj-net
 
 services:
   traefik:
-    image: traefik:v3.5
+    image: traefik:v3.7
     volumes:
       - ${LETSENCRYPT_DIR}:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
