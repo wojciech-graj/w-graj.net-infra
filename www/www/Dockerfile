@@ -6,7 +6,6 @@ ADD --checksum=sha256:26518e14a3a04100cd76c0d96cab2d1171f36152215edd9790a28d2026
 ADD https://github.com/wojciech-graj/.emacs.d.git /root/.emacs.d
 
 RUN apt-get update \
- && apt-get upgrade -y \
  && xargs -a /root/.emacs.d/packages.txt \
  apt-get install -y --no-install-recommends \
  emacs-nox \

@@ -3,7 +3,6 @@ FROM debian:trixie-slim AS build
 WORKDIR /src
 
 RUN apt-get update \
- && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
  build-essential \
  make \
@@ -19,7 +18,6 @@ RUN tar xzf 0.3.1.tar.gz -C /src --strip-components=1 \
 FROM debian:trixie-slim
 
 RUN apt-get update \
- && apt-get upgrade -y \
  && apt-get install -y --no-install-recommends \
  inetutils-telnetd \
  openbsd-inetd \
