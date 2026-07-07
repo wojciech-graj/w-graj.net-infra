@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  doom-ascii:
+    name: Build doom-ascii
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v7
+
+    - name: Build
+      working-directory: doom-ascii
+      run: docker compose build
+
+  www:
+    name: Build www
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v7
+
+    - name: Build
+      working-directory: www
+      env:
+        LETSENCRYPT_DIR: /
+        RES_DIR: res
+        WG_CONFIG_DIR: /
+      run: |
+        mkdir res
+        docker compose build
