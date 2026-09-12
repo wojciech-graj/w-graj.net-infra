@@ -9,10 +9,10 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ADD --checksum=sha256:7ade3d78d9403542cf53b3ed3a1575751c815d4b7ff3f1fb364aa1ee664807f0 \
- https://github.com/wojciech-graj/doom-ascii/archive/refs/tags/0.3.1.tar.gz .
+ADD --checksum=sha256:a7cd1936550cc862bda6029860a9dd3caf73d14d7e6c29e56ae807b234a30f82 \
+ https://github.com/wojciech-graj/doom-ascii/archive/refs/tags/v0.3.2.tar.gz .
 
-RUN tar xzf 0.3.1.tar.gz -C /src --strip-components=1 \
+RUN tar xzf v0.3.2.tar.gz -C /src --strip-components=1 \
  && CFLAGS=-DDG_DEMO make -j"$(nproc)"
 
 FROM debian:trixie-slim
