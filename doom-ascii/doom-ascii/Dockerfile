@@ -6,7 +6,6 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
  build-essential \
  make \
- && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 ADD --checksum=sha256:a7cd1936550cc862bda6029860a9dd3caf73d14d7e6c29e56ae807b234a30f82 \
@@ -21,7 +20,6 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
  inetutils-telnetd \
  openbsd-inetd \
- && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 RUN echo "telnet stream tcp nowait root /usr/sbin/telnetd telnetd -E /usr/local/bin/launch-doom-ascii.sh" >> /etc/inetd.conf \

@@ -9,7 +9,6 @@ RUN apt-get update \
  && xargs -a /root/.emacs.d/packages.txt \
  apt-get install -y --no-install-recommends \
  emacs-nox \
- && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 RUN emacs --batch --script /root/.emacs.d/init.el
