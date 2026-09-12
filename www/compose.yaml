@@ -27,7 +27,7 @@ services:
     restart: unless-stopped
 
   wireguard:
-    image: linuxserver/wireguard:1.0.20250521
+    image: linuxserver/wireguard:1.0.20260223
     volumes:
       - ${WG_CONFIG_DIR}:/config
     environment:
